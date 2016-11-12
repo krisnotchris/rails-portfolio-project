@@ -1,3 +1,4 @@
+require 'pry'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -9,6 +10,7 @@ class User < ApplicationRecord
 
 
    def self.from_omniauth(auth)
+
      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
        user.name = auth.info.name
        user.email = "#{auth.info.name}@twitter.com"
