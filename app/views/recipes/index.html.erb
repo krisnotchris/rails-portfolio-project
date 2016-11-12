@@ -13,3 +13,9 @@
   <h4>by <%= recipe.user.name %></h4>
 
 <% end %>
+
+<%= @user.each do |user| %>
+<%= user.name %>
+<%= current_user %>
+
+<% end %>
