@@ -1,4 +1,14 @@
 <h1>comments index</h1>
+
+<% @recipe.comments.each do |comment| %>
+<ul>
+  <li><%= comment.content %>
+  by: <%= comment.user.name %></li>
+</ul>
+<% end %>
+
+<br><br>
+
 <%= form_tag(recipe_comments_path) %>
 
   <%= label_tag "Add Your Comment" %><br>
