@@ -3,5 +3,13 @@
 <%= @recipe.description %><br>
 <%= @recipe.rating %><br>
 
+<h1>Comments</h1>
+<% @recipe.comments.each do |comment| %>
+<%= binding.pry %>
+<ul>
+  <li><%= comment.content %>
+  by: <%= comment.user.name %></li>
+</ul>
+<% end %>
 <h4>Want to add a comment?</h4>
 <%= link_to "click here", recipe_comments_path(@recipe.id, @comment), id: :comments %>
