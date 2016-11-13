@@ -1,12 +1,7 @@
 <h1>Ingredients Info</h1>
 
-
-
-
-<% @recipe.recipe_ingredients.each do |ing| %>
-<ul>
-<li>Name: <%= ing.ingredient.ingredient_name %></li>
-
-<li>Quantity:<%= ing.quantity %></li>
-</ul>
+<% @recipe_ingredients.each do |recipe_ingredient| %>
+<%= recipe_ingredient.ingredient.ingredient_name %><br>
+<%= recipe_ingredient.quantity %><br>
+<%= link_to "Update Quantity", recipe_recipe_ingredient_path(recipe_ingredient.recipe_id, recipe_ingredient.ingredient_id) %>
 <% end %>
