@@ -2,7 +2,6 @@
 <%= @recipe.name %><br>
 <%= @recipe.description %><br>
 <%= @recipe.rating %><br>
-<% @recipe.recipe_ingredients.each do |ingredient| %>
-    <%= ingredient.quantity %>
-    <%= ingredient.recipe.name %>
-<% end %>
+
+<h4>Want to add a comment?</h4>
+<%= link_to "click here", recipe_comments_path(@recipe.id, @comment), id: :comments %>
