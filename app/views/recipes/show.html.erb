@@ -5,7 +5,7 @@
 
 <h1>Comments</h1>
 <% @recipe.comments.each do |comment| %>
-<%= binding.pry %>
+
 <ul>
   <li><%= comment.content %>
   by: <%= comment.user.name %></li>
