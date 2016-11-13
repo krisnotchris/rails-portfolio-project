@@ -2,6 +2,6 @@
 <%= link_to "Add New Ingredient", new_ingredient_path %><br />
 <%= @ingredients.each do |ingredient| %>
   <ul>
-    <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
+    <li><%= link_to ingredient.ingredient_name, ingredient_path(ingredient) %></li>
   </ul>
 <% end %>

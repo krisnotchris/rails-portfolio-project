@@ -12,13 +12,10 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients
 
   def ingredients_attributes=(ingredients_attributes)
-  if ingredients_attributes.values[0]["name"] != ""
-    #What a hack... this makes sure that the new ingredient form wasn't blank
-    #before building the ingredients. It works around ingredient validation issues.
-  ingredients_attributes.each do |i, ingredient_attributes|
-      self.ingredients.build(ingredient_attributes)
+    ingredients_attributes.values.each do |ingredient_attribute|
+      ingredient = Ingredient.find_or_create_by(ingredient_attribute)
+      self.ingredients << ingredient
     end
   end
-end
 
 end

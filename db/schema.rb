@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 20161112175643) do
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "ingredient_name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
