@@ -1,15 +1,15 @@
 <h1>Your Recipes</h1>
 
 <h4><%= link_to "Add a recipe", new_recipe_path %></h4>
+
 <% @recipes.each do |recipe| %>
-
-  <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
-
+  <% if recipe.user_id == current_user.id %>
+    <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
+  <% end %>
 <% end %>
 
 <h1>All Recipes</h1>
 <% @recipes.each do |recipe| %>
   <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
   <h4>by <%= recipe.user.name %></h4>
-
 <% end %>
