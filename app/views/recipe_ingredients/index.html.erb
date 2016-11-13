@@ -3,3 +3,6 @@
 <h1><%= @recipe.name %></h1>
 <h2><%= @recipe.description %></h2>
 <h2><%= @recipe.rating %></h2>
+<% @recipe.recipe_ingredients.each do |ing| %>
+Quantity:<%= ing.quantity %>
+<% end %>
