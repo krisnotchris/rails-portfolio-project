@@ -1,7 +1,13 @@
-<h1>Recipe Show Page </h1>
-<%= @recipe.name %><br>
-<%= @recipe.description %><br>
-<%= @recipe.rating %><br>
+<h1><%= @recipe.name.capitalize %></h1>
+
+<p>Description: <%= @recipe.description %><p>
+<p>Rating: <%= @recipe.rating %></p>
+<p>This recipe was created by <%= @recipe.user.name %></p>
+
+<h2>Ingredients</h2>
+<% @recipe.recipe_ingredients.each do |ing| %>
+<%= ing.ingredient.ingredient_name %>
+<% end %>
 
 <h1>Comments</h1>
 <% @recipe.comments.each do |comment| %>
