@@ -2,3 +2,8 @@
 <%= @recipe.name %><br>
 <%= @recipe.description %><br>
 <%= @recipe.rating %>
+<% @recipe.ingredients.each do |ingredient| %>
+  <ul>
+    <li><%= ingredient.ingredient_name %></li>
+  </ul>
+<% end %>
