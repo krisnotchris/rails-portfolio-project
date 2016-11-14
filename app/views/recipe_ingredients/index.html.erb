@@ -7,7 +7,7 @@
 
   <%= form_tag recipe_recipe_ingredient_path(recipe.recipe_id, recipe.ingredient_id), :method => :put do |f| %>
     <%= label_tag (:quantity) %>
-    <%= text_field_tag(:quantity) %>
+    <%= text_field_tag "quantity", recipe.quantity %>
     <%= submit_tag("Update") %>
   <% end %>
 <% end %>
