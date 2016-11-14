@@ -1,24 +1,3 @@
-# Rails Portfolio Project
-## Grubb'n
-
-This application let's you create recipes and view recipes from other users. You can also view your ingredients and see what recipes you can make with what you have!
-
-## Installation
-
-1. Fork and clone the repo
-2. Run migrations: `rake db:migrate`
-3. Start rails server: `rails s`
-4. Navigate in your browser to `http://localhost:3000`
-
-## Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/krisnotchris/rails-portfolio-project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org/) code of conduct.
-
-## Built With
-
- [Ruby on Rails](http://rubyonrails.org/) - The web framework used
-
-## License
-
 Copyright (c) 2016 Kris Henderson
 
 Permission is hereby granted, free of charge, to any person obtaining
