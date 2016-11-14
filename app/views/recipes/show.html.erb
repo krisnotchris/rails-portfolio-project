@@ -6,9 +6,14 @@
 
 <h2>Ingredients</h2>
 <% @recipe.recipe_ingredients.each do |ing| %>
-
-<%= link_to ing.ingredient.ingredient_name, recipe_recipe_ingredients_path(ing.recipe) %>
+<%= link_to ing.ingredient.ingredient_name, recipe_recipe_ingredients_path(ing.recipe_id) %><br>
 <% end %>
+
+
+
+
+
+
 
 <h1>Comments</h1>
 <% @recipe.comments.each do |comment| %>

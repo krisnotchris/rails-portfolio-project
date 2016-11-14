@@ -1,7 +1,13 @@
 <h1>Ingredients Info</h1>
 
-<% @recipe_ingredients.each do |recipe_ingredient| %>
-<%= recipe_ingredient.ingredient.ingredient_name %><br>
-<%= recipe_ingredient.quantity %><br>
-<%= link_to "Update Quantity", recipe_recipe_ingredient_path(recipe_ingredient.recipe_id, recipe_ingredient.ingredient_id) %>
+
+<% @recipe_ingredients.each do |recipe| %>
+  <%= recipe.recipe.name %><br>
+  <%= recipe.quantity %>
+
+  <%= form_tag recipe_recipe_ingredient_path(recipe.recipe_id, recipe.ingredient_id), :method => :put do |f| %>
+    <%= label_tag (:quantity) %>
+    <%= text_field_tag(:quantity) %>
+    <%= submit_tag("Update") %>
+  <% end %>
 <% end %>
