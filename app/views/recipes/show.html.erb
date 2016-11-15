@@ -1,23 +1,29 @@
-<div col-span-12 class='text-center'>
-  <h1><%= @recipe.name.capitalize %></h1>
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <h1><%= @recipe.name.capitalize %></h1>
+  </div>
 </div>
-<div col-span-6 class='text-center well'>
-  <p>Description: <%= @recipe.description.capitalize %><p>
-  <p>Rating: <%= @recipe.rating %> out of 5</p>
-  <p>This recipe was created by <%= @recipe.user.name.capitalize %></p>
+<div class="row">
+  <div class='col-md-6 text-center'>
+    <h2>Info</h2>
+    <p>Description: <%= @recipe.description.capitalize %><p>
+    <p>Rating: <%= @recipe.rating %> out of 5</p>
+    <p>This recipe was created by <%= @recipe.user.name.capitalize %></p>
 
-  <h2>Ingredients</h2>
-  <% @recipe.recipe_ingredients.each do |ing| %>
-  <%= link_to ing.ingredient.ingredient_name, recipe_recipe_ingredients_path(ing.recipe_id) %><br>
-  <% end %>
-</div>
-<div col-span-6 class='text-center'>
-  <h2>Comments</h2>
-  <% @recipe.comments.each do |comment| %>
-    <p class='well'><%= comment.content %><br>
-    - <%= comment.user.name %></p>
-  <% end %>
-  <h4>Want to add a comment?</h4>
-  <%= link_to "click here", recipe_comments_path(@recipe.id, @comment), id: :comments %>
+    <h2>Ingredients</h2>
+    <% @recipe.recipe_ingredients.each do |ing| %>
+    <%= link_to ing.ingredient.ingredient_name, recipe_recipe_ingredients_path(ing.recipe_id) %><br>
+    <% end %>
+  </div>
 
+
+  <div class='col-md-6 text-center'>
+    <h2>Comments</h2>
+    <% @recipe.comments.each do |comment| %>
+      <p class="well"><%= comment.content %><br>
+      - <%= comment.user.name %></p>
+    <% end %>
+    <h4>Want to add a comment?</h4>
+    <h4><%= link_to "Click Here", recipe_comments_path(@recipe.id, @comment), id: :comments %></h4>
+  </div>
 </div>
