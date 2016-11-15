@@ -13,7 +13,7 @@ class RecipeIngredientsController < ApplicationController
   def update
     @recipe_ingredients = RecipeIngredient.find_by(recipe_id: params[:recipe_id])
     @recipe_ingredients.update(recipe_ingredients_params)
-    redirect_to recipe_recipe_ingredients_path
+    redirect_to recipe_path
   end
 
   private

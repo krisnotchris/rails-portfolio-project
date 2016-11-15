@@ -1,13 +1,19 @@
-<h1>Ingredients Info</h1>
-
-
 <% @recipe_ingredients.each do |recipe| %>
-  <%= recipe.recipe.name %><br>
-  <%= recipe.quantity %>
-
-  <%= form_tag recipe_recipe_ingredient_path(recipe.recipe_id, recipe.ingredient_id), :method => :put do |f| %>
-    <%= label_tag (:quantity) %>
-    <%= text_field_tag "quantity", recipe.quantity %>
-    <%= submit_tag("Update") %>
-  <% end %>
-<% end %>
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <h1><%= recipe.ingredient.ingredient_name %></h1>
+    <p>Update the quantity of this particular ingredient.</p>
+  </div>
+</div>
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <%= form_tag recipe_recipe_ingredient_path(recipe.recipe_id, recipe.ingredient_id), :method => :put do |f| %>
+      <%= label_tag (:quantity) %>
+      <%= text_field_tag "quantity", recipe.quantity %>
+      <%= submit_tag("Update") %>
+      <% end %>
+    <% end %>
+    <h6>The number listed in the box is the current quantity on hand of this ingredient.</h6>
+    <h6>*IMPORTANT* You must only enter numbers into the box above, otherwise it will default to zero, and we know you don't want zero!</h6>
+  </div>
+</div>

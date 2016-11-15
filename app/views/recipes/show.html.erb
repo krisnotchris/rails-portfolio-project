@@ -3,8 +3,8 @@
     <h1><%= @recipe.name.capitalize %></h1>
   </div>
 </div>
-<div class="row">
-  <div class='col-md-6 text-center'>
+<div class="row well">
+  <div class='col-md-12 text-center'>
     <h2>Info</h2>
     <p>Description: <%= @recipe.description.capitalize %><p>
     <p>Rating: <%= @recipe.rating %> out of 5</p>
@@ -12,12 +12,13 @@
 
     <h2>Ingredients</h2>
     <% @recipe.recipe_ingredients.each do |ing| %>
-    <%= link_to ing.ingredient.ingredient_name, recipe_recipe_ingredients_path(ing.recipe_id) %><br>
+    <%= link_to ing.ingredient.ingredient_name, recipe_recipe_ingredients_path(ing.recipe_id) %> | Quantity: <%=ing.quantity %><br>
     <% end %>
   </div>
+</div>
 
-
-  <div class='col-md-6 text-center'>
+<div class="row well">
+  <div class='col-md-12 text-center'>
     <h2>Comments</h2>
     <% @recipe.comments.each do |comment| %>
       <p class="well"><%= comment.content %><br>
