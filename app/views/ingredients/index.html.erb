@@ -1,7 +1,13 @@
-<h1>Ingredients index </h1>
-<%= link_to "Add New Ingredient", new_ingredient_path %><br />
-<% @ingredients.each do |ingredient| %>
-  <ul>
-    <li><%= link_to ingredient.ingredient_name, ingredient_path(ingredient) %></li>
-  </ul>
-<% end %>
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <h1>Ingredients Pantry</h1>
+    <button type="button" class="btn btn-primary"><%= link_to "Add New Ingredient", new_ingredient_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %></button>
+  </div>
+</div>
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <% @ingredients.each do |ingredient| %>
+      <%= link_to ingredient.ingredient_name.capitalize, ingredient_path(ingredient) %><br>
+    <% end %>
+  </div>
+</div>
