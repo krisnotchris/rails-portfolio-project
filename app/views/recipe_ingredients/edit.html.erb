@@ -1,0 +1,19 @@
+<div class="row">
+  <div class='col-md-12 text-center'>
+
+    <h1><%= @recipe_ingredient[0].ingredient.ingredient_name.capitalize %></h1>
+    <p>Update the quantity of this particular ingredient.</p>
+  </div>
+</div>
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <%= binding.pry %>
+    <%= form_tag recipe_recipe_ingredient_path(@recipe_ingredient[0].recipe_id, @recipe_ingredient[0].id), :method => :put do |f| %>
+      <%= label_tag (:quantity) %>
+      <%= text_field_tag "quantity", @recipe_ingredient[0].quantity %>
+      <%= submit_tag("Update") %>
+      <% end %>
+    <h6>The number listed in the box is the current quantity on hand of this ingredient.</h6>
+    <h6>*IMPORTANT* You must only enter numbers into the box above, otherwise it will default to zero, and we know you don't want zero!</h6>
+  </div>
+</div>

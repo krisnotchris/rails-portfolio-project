@@ -12,7 +12,7 @@
 
     <h2>Ingredients</h2>
     <% @recipe.recipe_ingredients.each do |ing| %>
-    <%= link_to ing.ingredient.ingredient_name, recipe_recipe_ingredients_path(ing.recipe_id) %> | Quantity: <%=ing.quantity %><br>
+    <%= link_to ing.ingredient.ingredient_name, edit_recipe_recipe_ingredient_path(ing.recipe_id, ing.ingredient_id) %> | Quantity: <%=ing.quantity %><br>
     <% end %>
   </div>
 </div>

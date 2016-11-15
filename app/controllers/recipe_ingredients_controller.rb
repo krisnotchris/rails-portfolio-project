@@ -13,7 +13,12 @@ class RecipeIngredientsController < ApplicationController
   def update
     @recipe_ingredients = RecipeIngredient.find_by(recipe_id: params[:recipe_id])
     @recipe_ingredients.update(recipe_ingredients_params)
-    redirect_to recipe_path
+    @recipe = Recipe.find(params[:recipe_id])
+    redirect_to recipe_path(@recipe.id)
+  end
+
+  def edit
+    @recipe_ingredient = RecipeIngredient.where(ingredient_id: params[:id])
   end
 
   private
