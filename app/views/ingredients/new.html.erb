@@ -1,6 +1,15 @@
-<h1> new ingredient page</h1>
-<%= form_for @ingredient do |f| %>
-<%= f.label :ingredient_name %>
-<%= f.text_field :ingredient_name %>
-<%= f.submit %>
-<% end %>
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <h1>New Ingredient</h1>
+    <p>Found something in your pantry that you can maybe cook with? Add it to your Ingredient Pantry!</p>
+  </div>
+</div>
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <%= form_for @ingredient do |f| %>
+    <%= f.label :ingredient_name %>
+    <%= f.text_field :ingredient_name %>
+    <%= f.submit %>
+    <% end %>
+  </div>
+</div>
