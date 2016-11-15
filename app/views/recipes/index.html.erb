@@ -1,24 +1,24 @@
-
-
-<div class="jumbotron">
-  <div class="container">
-    <div col-span-12 class='text-center'>
-      <h2>Your Recipes</h2>
-    </div>
-    <div col-span-12 class='text-center'>
-      <% @recipes.each do |recipe| %>
-        <% if recipe.user_id == current_user.id %>
-          <h4><%= link_to recipe.name.capitalize, recipe_path(recipe) %></h4>
-        <% end %>
-      <% end %>
-      <button type="button" class="btn btn-primary"><%= link_to "Add a recipe", new_recipe_path , {:style=>'color:#FFFFFF;', :class => "css_class"} %></button>
-    </div>
-    <div col-span-12 class='text-center'>
-      <h2>All Recipes</h2>
-      <% @recipes.each do |recipe| %>
+<div class="row">
+  <div class='col-span-12 text-center'>
+    <h2>Your Recipes</h2>
+  </div>
+</div>
+<div class="row">
+  <div class='col-span-12 text-center'>
+    <% @recipes.each do |recipe| %>
+      <% if recipe.user_id == current_user.id %>
         <h4><%= link_to recipe.name.capitalize, recipe_path(recipe) %></h4>
-        <h5>by <%= recipe.user.name %></h5>
       <% end %>
-    </div>
+    <% end %>
+    <button type="button" class="btn btn-primary"><%= link_to "Add a recipe", new_recipe_path , {:style=>'color:#FFFFFF;', :class => "css_class"} %></button>
+  </div>
+</div>
+<div class="row">
+  <div class='col-span-12 text-center'>
+    <h2>All Recipes</h2>
+    <% @recipes.each do |recipe| %>
+      <h4><%= link_to recipe.name.capitalize, recipe_path(recipe) %></h4>
+      <h5>by <%= recipe.user.name %></h5>
+    <% end %>
   </div>
 </div>

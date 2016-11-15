@@ -1,27 +1,23 @@
-<h1><%= @recipe.name.capitalize %></h1>
+<div col-span-12 class='text-center'>
+  <h1><%= @recipe.name.capitalize %></h1>
+</div>
+<div col-span-6 class='text-center well'>
+  <p>Description: <%= @recipe.description.capitalize %><p>
+  <p>Rating: <%= @recipe.rating %> out of 5</p>
+  <p>This recipe was created by <%= @recipe.user.name.capitalize %></p>
 
-<p>Description: <%= @recipe.description %><p>
-<p>Rating: <%= @recipe.rating %></p>
-<p>This recipe was created by <%= @recipe.user.name %></p>
+  <h2>Ingredients</h2>
+  <% @recipe.recipe_ingredients.each do |ing| %>
+  <%= link_to ing.ingredient.ingredient_name, recipe_recipe_ingredients_path(ing.recipe_id) %><br>
+  <% end %>
+</div>
+<div col-span-6 class='text-center'>
+  <h2>Comments</h2>
+  <% @recipe.comments.each do |comment| %>
+    <p class='well'><%= comment.content %><br>
+    - <%= comment.user.name %></p>
+  <% end %>
+  <h4>Want to add a comment?</h4>
+  <%= link_to "click here", recipe_comments_path(@recipe.id, @comment), id: :comments %>
 
-<h2>Ingredients</h2>
-<% @recipe.recipe_ingredients.each do |ing| %>
-<%= link_to ing.ingredient.ingredient_name, recipe_recipe_ingredients_path(ing.recipe_id) %><br>
-<% end %>
-
-
-
-
-
-
-
-<h1>Comments</h1>
-<% @recipe.comments.each do |comment| %>
-
-<ul>
-  <li><%= comment.content %>
-  by: <%= comment.user.name %></li>
-</ul>
-<% end %>
-<h4>Want to add a comment?</h4>
-<%= link_to "click here", recipe_comments_path(@recipe.id, @comment), id: :comments %>
+</div>
