@@ -3,21 +3,21 @@
 <div class="jumbotron">
   <div class="container">
     <div col-span-12 class='text-center'>
-      <h2><span class="label label-default">Your Recipes</span></h2>
+      <h2>Your Recipes</h2>
     </div>
     <div col-span-12 class='text-center'>
-      <h4><%= link_to "Add a recipe", new_recipe_path %></h4>
       <% @recipes.each do |recipe| %>
         <% if recipe.user_id == current_user.id %>
-          <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
+          <h4><%= link_to recipe.name.capitalize, recipe_path(recipe) %></h4>
         <% end %>
       <% end %>
+      <button type="button" class="btn btn-primary"><%= link_to "Add a recipe", new_recipe_path , {:style=>'color:#FFFFFF;', :class => "css_class"} %></button>
     </div>
     <div col-span-12 class='text-center'>
-      <h2><span class="label label-default">All Recipes</span></h2>
+      <h2>All Recipes</h2>
       <% @recipes.each do |recipe| %>
-        <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
-        <h4>by <%= recipe.user.name %></h4>
+        <h4><%= link_to recipe.name.capitalize, recipe_path(recipe) %></h4>
+        <h5>by <%= recipe.user.name %></h5>
       <% end %>
     </div>
   </div>
