@@ -1,20 +1,26 @@
-<h1>comments index</h1>
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <h1><%= @recipe.name.capitalize %> Comments</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <% @recipe.comments.each do |comment| %>
+      <p class='well'><%= comment.content %><br>
+      - <%= comment.user.name %></p>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <%= form_tag(recipe_comments_path) %>
 
-<% @recipe.comments.each do |comment| %>
-<ul>
-  <li><%= comment.content %>
-  by: <%= comment.user.name %></li>
-</ul>
-<% end %>
+      <%= label_tag "Add Your Comment" %><br>
+      <%= text_area_tag :content %><br>
 
-<br><br>
+      <%= hidden_field_tag :user_id, current_user.id %>
+      <%= hidden_field_tag :recipe_id, @recipe.id %>
 
-<%= form_tag(recipe_comments_path) %>
-
-  <%= label_tag "Add Your Comment" %><br>
-  <%= text_area_tag :content %><br>
-
-  <%= hidden_field_tag :user_id, current_user.id %>
-  <%= hidden_field_tag :recipe_id, @recipe.id %>
-
-<%= submit_tag "Add Comment" %>
+    <%= submit_tag "Add Comment" %>
+  </div>
+</div>

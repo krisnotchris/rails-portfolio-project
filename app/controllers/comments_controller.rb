@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to recipe_comments_path
+      redirect_to recipe_path(params[:recipe_id])
     else
       render 'new'
     end

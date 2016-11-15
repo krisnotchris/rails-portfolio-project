@@ -1,7 +1,14 @@
-<ul class="nav nav-tabs">
-  <% if user_signed_in? %>
-  <li role="presentation"><%= link_to "Recipes", recipes_path %></li>
-  <li role="presentation"><%= link_to "Ingredients", ingredients_path %></li>
-  <li role="presentation"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+<div class="row">
+  <div class='col-md-6'>
+    <ul class="nav nav-tabs">
+      <% if user_signed_in? %>
+      <li role="presentation"><%= link_to "Recipes", recipes_path %></li>
+      <li role="presentation"><%= link_to "Ingredients", ingredients_path %></li>
+      <li role="presentation"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+    </ul>
+  </div>
+  <div class='col-md-6 text-center'>
+    <h4>Hello, <%= current_user.name %></h4>
+  </div>
   <% end %>
-</ul>
+</div>
