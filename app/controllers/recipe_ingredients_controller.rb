@@ -1,24 +1,24 @@
 class RecipeIngredientsController < ApplicationController
-
+  before_filter :auth_user
   def index
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_id = params[:recipe_id].to_i
     @recipe_ingredients = RecipeIngredient.where(recipe_id: @recipe_id)
   end
 
-  def create
-    redirect_to recipe_recipe_ingredients_path
-  end
-
   def update
-    @recipe_ingredients = RecipeIngredient.find_by(recipe_id: params[:recipe_id])
-    @recipe_ingredients.update(recipe_ingredients_params)
     @recipe = Recipe.find(params[:recipe_id])
+    @recipe_ingredients = @recipe.recipe_ingredients
+    @ing = @recipe_ingredients.find_by(ingredient_id: params[:id])
+    @ing.update(recipe_ingredients_params)
+
     redirect_to recipe_path(@recipe.id)
   end
 
   def edit
-    @recipe_ingredient = RecipeIngredient.where(ingredient_id: params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_ingredient = @recipe.recipe_ingredients
+    @ing = @recipe_ingredient.find_by(ingredient_id: params[:id])
   end
 
   private

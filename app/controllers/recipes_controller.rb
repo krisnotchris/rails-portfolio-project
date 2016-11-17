@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_filter :auth_user
   def index
     @recipes = Recipe.all
   end
@@ -13,7 +14,7 @@ class RecipesController < ApplicationController
     # @recipe.ingredients = params[:recipe][:ingredient_ids]
 
     if @recipe.save
-      redirect_to recipe_recipe_ingredients_path(@recipe)
+      redirect_to recipe_path(@recipe)
     else
       render :new
     end

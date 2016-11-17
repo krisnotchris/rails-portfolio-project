@@ -1,7 +1,7 @@
 class IngredientsController < ApplicationController
+  before_filter :auth_user
   def index
     @ingredients = Ingredient.all
-    
   end
 
   def new

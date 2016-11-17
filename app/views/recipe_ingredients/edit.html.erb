@@ -1,16 +1,15 @@
 <div class="row">
   <div class='col-md-12 text-center'>
-
-    <h1><%= @recipe_ingredient[0].ingredient.ingredient_name.capitalize %></h1>
+    <h1><%= @ing.ingredient.ingredient_name.capitalize %></h1>
     <p>Update the quantity of this particular ingredient.</p>
   </div>
 </div>
 <div class="row">
   <div class='col-md-12 text-center'>
-    <%= binding.pry %>
-    <%= form_tag recipe_recipe_ingredient_path(@recipe_ingredient[0].recipe_id, @recipe_ingredient[0].id), :method => :put do |f| %>
+  
+    <%= form_tag recipe_recipe_ingredient_path(recipe_id: @ing.recipe_id, id: @ing.ingredient_id), :method => :put do |f| %>
       <%= label_tag (:quantity) %>
-      <%= text_field_tag "quantity", @recipe_ingredient[0].quantity %>
+      <%= text_field_tag "quantity", @ing.quantity %>
       <%= submit_tag("Update") %>
       <% end %>
     <h6>The number listed in the box is the current quantity on hand of this ingredient.</h6>

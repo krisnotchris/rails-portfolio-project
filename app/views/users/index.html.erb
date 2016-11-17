@@ -3,9 +3,11 @@
     <h1>Grubb'n</h1>
   </div>
 </div>
+<% if !user_signed_in? %>
 <div class="row">
   <div class="col-span-12 text-center">
     <button style="color: red" type="button" class="btn btn-default btn-lg active" role="button"><%= link_to "Sign up", new_user_registration_path %></button> or
     <button type="button" class="btn btn-default btn-lg active" role="button"><%= link_to "Sign in", new_user_session_path %></button>
   </div>
 </div>
+<% end %>

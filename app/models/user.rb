@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :comments
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         :omniauth_providers => [:twitter, :facebook]
+         :omniauth_providers => [:facebook]
 
 
    def self.from_omniauth(auth)
