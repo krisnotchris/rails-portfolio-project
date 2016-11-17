@@ -11,8 +11,6 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.create(recipe_params)
 
-    # @recipe.ingredients = params[:recipe][:ingredient_ids]
-
     if @recipe.save
       redirect_to recipe_path(@recipe)
     else
