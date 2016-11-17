@@ -1,0 +1,9 @@
+<div class='row'>
+  <div class='col-md-12 text-center'>
+    <%= form_tag recipe_path(@recipe), method: "put" do %>
+    <label>Ingredients:</label><br>
+    <%= check_box :ingredient, @recipe.ingredients %>
+    <%= submit_tag "Submit update" %>
+    <% end %>
+  </div>
+</div>

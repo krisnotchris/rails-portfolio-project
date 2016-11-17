@@ -11,6 +11,7 @@
     <p>This recipe was created by <%= @recipe.user.name.capitalize %></p>
 
     <h2>Ingredients</h2>
+    <h7><%= link_to "Edit", edit_recipe_path(@recipe) %></h7><br>
     <% @recipe.recipe_ingredients.each do |ing| %>
     <%= link_to ing.ingredient.ingredient_name.capitalize, edit_recipe_recipe_ingredient_path(recipe_id: ing.recipe_id, id: ing.ingredient_id) %> | Quantity: <%=ing.quantity %><br>
     <% end %>
