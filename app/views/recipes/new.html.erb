@@ -20,7 +20,7 @@
   </div>
   <div class='col-md-12 text-center'>
     <%= f.label "Select Existing Ingredients:" %><br>
-      <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :ingredient_name, checked: @recipe.try(:ingredient_ids) %><br>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :ingredient_name, checked: @recipe.try(:ingredient_ids) %><br>
 
     <label>or add one!</label>
     <%= f.fields_for(:ingredients, Ingredient.new) do |i| %>
@@ -30,7 +30,6 @@
 
     <%= f.hidden_field :user_id, :value => current_user.id %><br>
     <%= f.submit %>
-
-    <% end %>
   </div>
+  <% end %>
 </div>
