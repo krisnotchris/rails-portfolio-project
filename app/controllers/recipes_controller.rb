@@ -31,6 +31,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @comment = Comment.new
+    binding.pry
+    @comment = Comment.order(created_at: :desc).page(params[:page])
     respond_to do |format|
       format.html {render :show}
       format.json {render json:@recipe}
