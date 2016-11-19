@@ -1,4 +1,4 @@
-# Rails Portfolio Project
+# Rails + jQuery Portfolio Project
 ## Grubb'n
 
 This application let's you create recipes and view recipes from other users. You can also view your ingredients and see what recipes you can make with what you have!
@@ -15,7 +15,8 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/krisno
 
 ## Built With
 
- [Ruby on Rails](http://rubyonrails.org/) - The web framework used
+ [Ruby on Rails](http://rubyonrails.org/) - The web framework used for the backend
+ [jQuery](https://jquery.com/) - JS library used for the front end
 
 ## License
 
