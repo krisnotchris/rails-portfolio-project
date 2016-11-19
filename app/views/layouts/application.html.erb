@@ -5,14 +5,17 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :ingredient %>
   </head>
 
   <body>
     <%= render 'layouts/navigation' %>
     <div class="jumbotron">
       <div class="container">
+
         <%= render 'layouts/messages' %>
         <%= yield %>
+
       </div>
     </div>
   </body>
