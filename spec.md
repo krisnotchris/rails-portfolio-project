@@ -22,3 +22,12 @@ Confirm:
 - [x] Limited logic in controllers
 - [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
+
+# Specifications for the Rails-JS Assessment
+Specs:
+- [] Do not use remote :true
+- [] Render at least one index page via jQuery and an Active Model Serialization JSON backend
+- [] Rails API must reveal one has_many relationship
+- [] Use Rails API and a form to create a resource and render the response without a page refresh
+- [] Must translate the JSON responses into JavaScript Model Objects. The model objects must have at least one method on
+      the prototype.
