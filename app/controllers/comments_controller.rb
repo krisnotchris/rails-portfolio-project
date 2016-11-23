@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :auth_user
+  before_action :auth_user
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @comment = Comment.new

@@ -1,5 +1,5 @@
 class RecipeIngredientsController < ApplicationController
-  before_filter :auth_user
+  before_action :auth_user
   def index
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_id = params[:recipe_id].to_i
@@ -22,6 +22,10 @@ class RecipeIngredientsController < ApplicationController
   end
 
   private
+
+  def recipe_finder
+    @recipe = Recipe.find(params[:recipe_id])
+  end
 
   def recipe_ingredients_params
     params.permit(:quantity)

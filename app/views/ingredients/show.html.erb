@@ -7,13 +7,23 @@
 <div class="row">
   <div class='col-md-12 text-center'>
     <% @ingredient.recipes.each do |recipe| %>
-       <%= link_to recipe.name.capitalize, recipe_path(recipe) %><br>
+       <%= link_to recipe.name.capitalize, recipe_path(recipe), id: :recipe %><br>
     <% end %>
   </div>
 </div>
 
 <% content_for :ingredient do %>
   <script>
-    
+  $(function(){
+    linkFix();
+  })
+
+  var linkFix = function(){
+    $("a#recipe").click(function(event){
+      event.preventDefault();
+    })
+  }
+
+
   </script>
 <% end %>

@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_filter :auth_user
+  before_action :auth_user
   def index
     @recipes = Recipe.all
   end

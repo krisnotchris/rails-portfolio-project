@@ -85,15 +85,12 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-    jsonapi (0.1.1.beta5)
-      jsonapi-parser (= 0.1.1.beta2)
+    jsonapi (0.1.1.beta6)
+      jsonapi-parser (= 0.1.1.beta3)
       jsonapi-renderer (= 0.1.1.beta1)
-    jsonapi-parser (0.1.1.beta2)
+    jsonapi-parser (0.1.1.beta3)
     jsonapi-renderer (0.1.1.beta1)
     jwt (1.5.6)
-    kaminari (0.17.0)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -225,7 +222,6 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.5)
   jquery-rails
-  kaminari
   listen (~> 3.0.5)
   omniauth
   omniauth-facebook
@@ -243,4 +239,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.13.2
+   1.13.6
