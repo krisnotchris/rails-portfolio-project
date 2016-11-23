@@ -9,8 +9,13 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    @ingredient = Ingredient.create(ingredient_params)
-    redirect_to ingredients_path
+    @ingredient = Ingredient.new(ingredient_params)
+    if @ingredient.save
+      redirect_to ingredients_path
+    else
+      @message = @ingredient.errors.full_messages
+      render 'new'
+    end
   end
 
   def show
