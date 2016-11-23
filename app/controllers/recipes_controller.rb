@@ -1,11 +1,12 @@
 class RecipesController < ApplicationController
   before_action :auth_user
   def index
-    @recipes = Recipe.all
+    @sorted_recipes = Recipe.sort_by_rating
   end
 
   def new
     @recipe = Recipe.new
+    @ingredient = Ingredient.new
   end
 
   def edit
@@ -24,6 +25,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to recipe_path(@recipe)
     else
+      @message = @recipe.errors.full_messages
       render :new
     end
   end

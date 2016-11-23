@@ -20,4 +20,8 @@ class Recipe < ApplicationRecord
     end
   end
 
+  def self.sort_by_rating
+    Recipe.order(rating: :desc)
+  end
+
 end

@@ -4,6 +4,19 @@
     <p>Have a favorite recipe from grandmas ol' cookbook? Add it here for the world to see!</p>
   </div>
 </div>
+
+<div class="row">
+  <div class='col-md-12 text-center'>
+    <% if @message %>
+    <% @message.each do |message| %>
+    <div class='alert alert-danger'>
+      <%= message %>
+    </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <div class="row">
   <div class='col-md-12 text-center'>
     <%= form_for @recipe do |f| %>
@@ -21,7 +34,7 @@
     <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :ingredient_name, checked: @recipe.try(:ingredient_ids) %><br>
 
     <label>or add one!</label>
-    <%= f.fields_for(:ingredients, Ingredient.new) do |i| %>
+    <%= f.fields_for(:ingredients, @ingredient) do |i| %>
 
     <%= i.text_field :ingredient_name %><br>
     <% end %>

@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :auth_user
+  before_action :auth_user, :recipe_finder
   def new
-    @recipe = Recipe.find(params[:recipe_id])
     @comment = Comment.new
   end
 
@@ -10,16 +9,21 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to recipe_path(params[:recipe_id])
     else
-      render 'new'
+      @message = @comment.errors.full_messages
+
+      render 'index'
     end
   end
 
   def index
-    @recipe = Recipe.find(params[:recipe_id])
     @comments = @recipe.comments
   end
 
   private
+
+  def recipe_finder
+    @recipe = Recipe.find(params[:recipe_id])
+  end
 
   def comment_params
     params.permit(:content, :user_id, :recipe_id, :id)

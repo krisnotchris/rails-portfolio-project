@@ -5,7 +5,7 @@
 </div>
 <div class="row">
   <div class='col-span-12 text-center'>
-    <% @recipes.each do |recipe| %>
+    <% @sorted_recipes.each do |recipe| %>
       <% if recipe.user_id == current_user.id %>
         <h4><%= link_to recipe.name.capitalize, recipe_path(recipe) %></h4>
       <% end %>
@@ -15,8 +15,9 @@
 </div>
 <div class="row">
   <div class='col-span-12 text-center'>
+
     <h2>All Recipes</h2>
-    <% @recipes.each do |recipe| %>
+    <% @sorted_recipes.each do |recipe| %>
       <h4><%= link_to recipe.name.capitalize, recipe_path(recipe) %></h4>
       <h5>by <%= recipe.user.name %></h5>
     <% end %>
