@@ -21,7 +21,18 @@
   var linkFix = function(){
     $("a#recipe").click(function(event){
       event.preventDefault();
+      showRecipes(event["target"]["href"]);
     })
+  }
+
+  function showRecipes(url) {
+    $.getJSON(url + ".json", function(result) {
+      handler(result);
+    })
+  }
+
+  var handler = function(result) {
+    var recipe = new Recipe(result);
   }
 
 
