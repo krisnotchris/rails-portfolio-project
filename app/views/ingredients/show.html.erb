@@ -8,33 +8,62 @@
   <div class='col-md-12 text-center'>
     <% @ingredient.recipes.each do |recipe| %>
        <%= link_to recipe.name.capitalize, recipe_path(recipe), id: :recipe %><br>
+       <h1 id='recipe-<%= recipe.id %>'></h1>
+       <p id='recipe-<%= recipe.id %>'></p>
     <% end %>
   </div>
 </div>
 
-<% content_for :ingredient do %>
+<% content_for :ingredients %>
   <script>
-  $(function(){
-    linkFix();
-  })
+    $(function() {
+      actionBlock();
+      Recipe();
+    });
 
-  var linkFix = function(){
-    $("a#recipe").click(function(event){
-      event.preventDefault();
-      showRecipes(event["target"]["href"]);
-    })
-  }
+    var actionBlock = function() {
+      $('a#recipe').click(function(event){
+        event.preventDefault();
+        theRecipes(event["target"]["href"]);
+      });
+    }
 
-  function showRecipes(url) {
-    $.getJSON(url + ".json", function(result) {
-      handler(result);
-    })
-  }
+    function theRecipes(target_url){
+      $.getJSON(target_url + ".json", function(result){
+        handleResponse(result);
+        hideContent(result['id'])
+      })
+    }
 
-  var handler = function(result) {
-    var recipe = new Recipe(result);
-  }
+    var handleResponse = function(result){
+      var recipe = new Recipe(result);
+      var hide = ' <a href="#" id="hideMe">Hide this</a>'
+      $("h1#recipe-" + recipe.id).html(recipe.name + recipe.readMore);
+      $("p#recipe-" + recipe.id).html(recipe.description + recipe.listItems() + hide);
+    };
 
+    function Recipe(resultsHash) {
+      this.id = resultsHash['id'];
+      this.name = resultsHash['name'];
+      this.description = resultsHash['description'];
+      this.readMore = ' <a href="/recipes/' + recipe.id + '" id="readMore">Read More</a>'
+      this.ingredients = resultsHash['ingredients'];
+    };
 
+    Recipe.prototype.listItems = function() {
+      var ingredientList = '<h5>Other Ingredients in this Recipe</h5><ol>';
+      for(var i = 0; i<this.ingredients.length; i++){
+        ingredientList += '<li>' + this.ingredients[i].ingredient_name + '</li>';
+      }
+      ingredientList += '</ol>';
+      return ingredientList;
+    };
+
+    var hideContent = function(id) {
+      $('#hideMe').on('click', function(event){
+        event.preventDefault();
+        $("h1#recipe-" + id).text("");
+        $("p#recipe-" + id).text("");
+      });
+    }
   </script>
-<% end %>

@@ -2,6 +2,10 @@ class IngredientsController < ApplicationController
   before_action :auth_user
   def index
     @ingredients = Ingredient.all
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @ingredient}
+    end
   end
 
   def new

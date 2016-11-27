@@ -7,7 +7,27 @@
 <div class="row">
   <div class='col-md-12 text-center'>
     <% @ingredients.each do |ingredient| %>
-      <%= link_to ingredient.ingredient_name.capitalize, ingredient_path(ingredient) %><br>
+      <%= link_to ingredient.ingredient_name.capitalize, ingredient_path(ingredient), id: :ingredient %><br>
     <% end %>
   </div>
 </div>
+<div class=row>
+  hello world
+</div>
+<% content_for :ingredients %>
+  <script>
+  $(function(){
+    linkFix();
+  })
+
+  var linkFix = function() {
+    $("a#ingredient").click(function(event){
+      
+      var id = $(this).data("id");
+      $.get("/ingredients/" + id, function(data){
+        alert(data)
+      })
+    })
+  }
+
+  </script>
