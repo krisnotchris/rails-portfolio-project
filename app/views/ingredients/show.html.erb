@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<% content_for :ingredients %>
+<% content_for :ingredient %>
   <script>
     $(function() {
       actionBlock();
@@ -46,16 +46,15 @@
       this.id = resultsHash['id'];
       this.name = resultsHash['name'];
       this.description = resultsHash['description'];
-      this.readMore = ' <a href="/recipes/' + recipe.id + '" id="readMore">Read More</a>'
+      this.readMore = ' <a href="/recipes/' + this.id + '" id="readMore">Read More</a>'
       this.ingredients = resultsHash['ingredients'];
     };
 
     Recipe.prototype.listItems = function() {
-      var ingredientList = '<h5>Other Ingredients in this Recipe</h5><ol>';
+      var ingredientList = '<h5>Other Ingredients in this Recipe</h5>';
       for(var i = 0; i<this.ingredients.length; i++){
-        ingredientList += '<li>' + this.ingredients[i].ingredient_name + '</li>';
+        ingredientList += this.ingredients[i].ingredient_name + '<br>';
       }
-      ingredientList += '</ol>';
       return ingredientList;
     };
 

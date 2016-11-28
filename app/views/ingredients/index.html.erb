@@ -11,23 +11,3 @@
     <% end %>
   </div>
 </div>
-<div class=row>
-  hello world
-</div>
-<% content_for :ingredients %>
-  <script>
-  $(function(){
-    linkFix();
-  })
-
-  var linkFix = function() {
-    $("a#ingredient").click(function(event){
-      
-      var id = $(this).data("id");
-      $.get("/ingredients/" + id, function(data){
-        alert(data)
-      })
-    })
-  }
-
-  </script>

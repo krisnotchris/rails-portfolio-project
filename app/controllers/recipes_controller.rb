@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
     @comment = Comment.new
     respond_to do |format|
       format.html {render :show}
-      format.json {render json:@recipe}
+      format.json {render json: @recipe}
     end
   end
 
