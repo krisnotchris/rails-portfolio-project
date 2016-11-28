@@ -4,7 +4,7 @@ class IngredientsController < ApplicationController
     @ingredients = Ingredient.all
     respond_to do |format|
       format.html {render :index}
-      format.json {render json: @ingredient}
+      format.json {render json: @ingredients}
     end
   end
 

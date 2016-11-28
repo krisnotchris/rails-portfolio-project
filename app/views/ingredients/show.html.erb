@@ -14,14 +14,15 @@
   </div>
 </div>
 
-<% content_for :ingredient %>
+<% content_for :ingredient do %>
   <script>
     $(function() {
-      actionBlock();
+      actionStopper();
       Recipe();
     });
 
-    var actionBlock = function() {
+    var actionStopper = function() {
+
       $('a#recipe').click(function(event){
         event.preventDefault();
         theRecipes(event["target"]["href"]);
@@ -29,6 +30,7 @@
     }
 
     function theRecipes(target_url){
+
       $.getJSON(target_url + ".json", function(result){
         handleResponse(result);
         hideContent(result['id'])
@@ -66,3 +68,4 @@
       });
     }
   </script>
+<% end %>

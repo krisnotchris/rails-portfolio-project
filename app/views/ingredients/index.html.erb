@@ -1,13 +1,43 @@
 <div class="row">
   <div class='col-md-12 text-center'>
-    <h1>Ingredients Pantry</h1>
-    <button type="button" class="btn btn-primary"><%= link_to "Add New Ingredient", new_ingredient_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %></button>
+    <h1 id="header"></h1>
+    <button type="button" class="btn btn-primary" id="link"></button>
   </div>
 </div>
 <div class="row">
   <div class='col-md-12 text-center'>
-    <% @ingredients.each do |ingredient| %>
-      <%= link_to ingredient.ingredient_name.capitalize, ingredient_path(ingredient), id: :ingredient %><br>
-    <% end %>
+    <div id="list"></div>
   </div>
 </div>
+
+<% content_for :ingredients do %>
+  <script>
+    $(function(){
+      indexer();
+    })
+
+    function indexer(){
+      $("#header").html("Ingredients Pantry");
+      $("#link").html('<%= link_to "Add New Ingredient", new_ingredient_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %>')
+      $.ajax({
+        url: '/ingredients',
+        method: 'GET',
+        dataType: 'JSON',
+        success: function(response){
+          createLinks(response);
+        }
+      })
+    };
+
+    function createLinks(array){
+      var HTML = "";
+      for(var i=0; i < array.length; i++){
+        var name = array[i].ingredient_name
+        var id = array[i].id
+        HTML += "<a href='/ingredients/" + id + "'>" + name + "</a>" + "<br>"
+      }
+      $("#list").html(HTML)
+    }
+
+  </script>
+<% end %>
