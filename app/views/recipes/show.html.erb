@@ -20,27 +20,26 @@
 
 <div class="row well">
   <div class='col-md-12 text-center'>
-    <h2>Comments</h2>
+    <h2 id="header"></h2>
     <% @recipe.comments.each do |comment| %>
       <p class="well"><%= comment.content %><br>
       - <%= comment.user.name %></p>
     <% end %>
-    <h4>Want to add a comment?</h4>
-    <h4><%= link_to "Click Here", recipe_comments_path(@recipe.id, @comment), id: :comments %></h4>
+    <h4 id="question"></h4>
+    <h4 id="link"></h4>
   </div>
 </div>
 
 <% content_for :comments do %>
   <script>
     $(function(){
-      tester();
+      indexer();
     })
 
-    function tester(){
-      $("a#comments").click(function(event){
-        event.preventDefault();
-        alert('did i slect it')
-      })
-    }
+    function indexer(){
+      $("#header").html("Comments");
+      $("#question").html("Want to add a comment?")
+      $("#link").html('<%= link_to "Click Here", recipe_comments_path(@recipe.id, @comment), id: :comments %>')
+    };
   </script>
 <% end %>

@@ -24,14 +24,37 @@
 </div>
 <div class="row">
   <div class='col-md-12 text-center'>
-    <%= form_tag(recipe_comments_path) %>
-
-      <%= label_tag "Add Your Comment" %><br>
-      <%= text_area_tag :content %><br>
-
-      <%= hidden_field_tag :user_id, current_user.id %>
-      <%= hidden_field_tag :recipe_id, @recipe.id %>
-
-    <%= submit_tag "Add Comment" %>
+    <div id='new_comment'>
+      <%= render 'form' %>
+    </div>
   </div>
 </div>
+
+<% content_for :comments do %>
+  <script>
+    $(function(){
+      createMethods();
+    })
+
+    var createMethods = function() {
+      $('div#new_comment form').on("submit", function(event){
+        event.preventDefault();
+        var comment = event['currentTarget']['2']['value'];
+        var user_id = event['currentTarget']['3']['value'];
+        var recipe_id = event['currentTarget']['4']['value'];
+        var values = $(this).serialize();
+        $.ajax({
+          url: "/recipes/" + recipe_id + "/comments/",
+          method: 'post',
+          data: values,
+          dataType: 'json',
+        }).done(function(data){
+          $('div#new_comment form').hide();
+          $('.newUser').text("<%= current_user.name %>" + " says:");
+          $("#newComment").text(data['content']);
+        });
+      })
+    }
+
+  </script>
+<% end %>

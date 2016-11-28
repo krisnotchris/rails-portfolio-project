@@ -17,6 +17,10 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @recipe.comments
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @comments}
+    end
   end
 
   private
