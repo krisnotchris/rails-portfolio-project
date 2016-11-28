@@ -6,7 +6,8 @@ Specs:
 <!-- - [x] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
  -- my ingredient show page uses jQuery to show the recipes made with this ingredient, displaying their details using AMS JSON. -->
 
-- [ ] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend.
+<!-- - [x] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend.
+  -- created my ingredient index page using jQuery and AMS JSON -->
 
 <!-- - [x] Include at least one has_many relationship in information rendered via JSON and appended to the DOM.
  -- the ingredient show page displays the relationship of has_many recipes -->
