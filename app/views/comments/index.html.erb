@@ -9,8 +9,10 @@
       <p class='well'><%= comment.content %><br>
       - <%= comment.user.name %></p>
     <% end %>
-    <div id='newComment'></div>
-    <div class='newUser'></div>
+  <div id='wrapper'>
+    <p id='newComment'></p>
+    <p class='newUser'></p>
+  </div>
   </div>
 </div>
 <div class="row">
@@ -54,6 +56,7 @@
           $('div#new_comment form').hide();
           $('.newUser').text("- " + "<%= current_user.name %>");
           $('#newComment').text(data['content']);
+          $('#wrapper').addClass('well');
         });
       })
     }
