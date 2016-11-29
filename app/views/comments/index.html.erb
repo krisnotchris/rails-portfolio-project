@@ -37,10 +37,10 @@
 <% content_for :comments do %>
   <script>
     $(function(){
-      createMethods();
+      createComment();
     })
 
-    var createMethods = function() {
+    var createComment = function() {
       $('div#new_comment form').on("submit", function(event) {
         event.preventDefault();
         var comment = event['currentTarget']['2']['value'];
