@@ -7,11 +7,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to recipe_path(params[:recipe_id])
+      render json: @comment
     else
       @message = @comment.errors.full_messages
-
-      render 'index'
     end
   end
 

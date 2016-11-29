@@ -9,6 +9,8 @@
       <p class='well'><%= comment.content %><br>
       - <%= comment.user.name %></p>
     <% end %>
+    <div id='newComment'></div>
+    <div class='newUser'></div>
   </div>
 </div>
 <div class="row">
@@ -37,7 +39,7 @@
     })
 
     var createMethods = function() {
-      $('div#new_comment form').on("submit", function(event){
+      $('div#new_comment form').on("submit", function(event) {
         event.preventDefault();
         var comment = event['currentTarget']['2']['value'];
         var user_id = event['currentTarget']['3']['value'];
@@ -47,11 +49,11 @@
           url: "/recipes/" + recipe_id + "/comments/",
           method: 'post',
           data: values,
-          dataType: 'json',
-        }).done(function(data){
+          dataType: 'json'
+        }).done(function(data) {
           $('div#new_comment form').hide();
-          $('.newUser').text("<%= current_user.name %>" + " says:");
-          $("#newComment").text(data['content']);
+          $('.newUser').text("- " + "<%= current_user.name %>");
+          $('#newComment').text(data['content']);
         });
       })
     }
