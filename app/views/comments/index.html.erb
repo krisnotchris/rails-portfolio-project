@@ -3,16 +3,13 @@
     <h1><%= @recipe.name.capitalize %> Comments</h1>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-12 text-center">
+<div class="row" id='lol'>
+  <div class="col-md-12 text-center mainBox">
     <% @recipe.comments.each do |comment| %>
       <p class='well'><%= comment.content %><br>
       - <%= comment.user.name %></p>
     <% end %>
-  <div id='wrapper'>
-    <p id='newComment'></p>
-    <p class='newUser'></p>
-  </div>
+
   </div>
 </div>
 <div class="row">
@@ -44,28 +41,50 @@
   <script>
     $(function(){
       createComment();
+      errorMaker();
     })
 
     var createComment = function() {
-debugger;
       $('div#new_comment form').on("submit", function(event) {
         event.preventDefault();
         var comment = event['currentTarget']['2']['value'];
         var user_id = event['currentTarget']['3']['value'];
         var recipe_id = event['currentTarget']['4']['value'];
         var values = $(this).serialize();
+
         $.ajax({
           url: "/recipes/" + recipe_id + "/comments/",
           method: 'post',
           data: values,
           dataType: 'json'
         }).done(function(data) {
+          content = data.content
+          username = "<%=current_user.name%>"
+          $('.mainBox').append('<p class="well">' + content  + '<br>' + '- ' + username + '</p>')
           $('.newUser').text("- " + "<%= current_user.name %>");
-          $('#newComment').text(data.content);
-          $('#wrapper').addClass('well');
+
+          $('textarea').val('');
+          errorMaker();
         });
       })
     }
 
+    var errorMaker = function(){
+      $('.error').html('<h5 style="color: red">Comment box empty, type something!</h5>');
+      $('input[type="submit"]').prop('disabled', true);
+      $('textarea').keyup(function(){
+        if($(this).val() !== '') {
+          $('.error').text('');
+          $('input[type="submit"]').prop('disabled', false);
+        } else {
+          $('.error').html('<h5 style="color: red">Comment box empty, type something!</h5>');
+          $('input[type="submit"]').prop('disabled', true);
+        }
+      })
+    }
+
+    var commentFinder = function() {
+
+    }
   </script>
 <% end %>
