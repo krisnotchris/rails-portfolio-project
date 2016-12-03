@@ -23,20 +23,20 @@
         url: '/ingredients',
         method: 'GET',
         dataType: 'JSON',
-        success: function(response){
-          createLinks(response);
-        }
+        success: handleResponse
       })
     };
 
+    function handleResponse(response) {
+      createLinks(response)
+    }
+
     function createLinks(array){
-      var HTML = "";
-      for(var i=0; i < array.length; i++){
-        var name = array[i].ingredient_name
-        var id = array[i].id
-        HTML += "<a href='/ingredients/" + id + "'>" + name + "</a>" + "<br>"
+      var linkString = "";
+      for (var i=0; i < array.length; i++){
+        linkString += "<a href='/ingredients/" + array[i].id + "'>" + array[i].ingredient_name + "</a>" + "<br>"
       }
-      $("#list").html(HTML)
+      $("#list").html(linkString)
     }
 
   </script>

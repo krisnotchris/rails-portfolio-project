@@ -28,6 +28,7 @@
 </div>
 <div class="row">
   <div class='col-md-12 text-center'>
+    <span class='error'></span>
     <div id='new_comment'>
       <%= render 'form' %>
     </div>
@@ -46,6 +47,7 @@
     })
 
     var createComment = function() {
+debugger;
       $('div#new_comment form').on("submit", function(event) {
         event.preventDefault();
         var comment = event['currentTarget']['2']['value'];
@@ -58,9 +60,8 @@
           data: values,
           dataType: 'json'
         }).done(function(data) {
-          $('div#new_comment form').hide();
           $('.newUser').text("- " + "<%= current_user.name %>");
-          $('#newComment').text(data['content']);
+          $('#newComment').text(data.content);
           $('#wrapper').addClass('well');
         });
       })
