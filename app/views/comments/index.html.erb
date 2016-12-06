@@ -61,8 +61,6 @@
           content = data.content
           username = "<%=current_user.name%>"
           $('.mainBox').append('<p class="well">' + content  + '<br>' + '- ' + username + '</p>')
-          $('.newUser').text("- " + "<%= current_user.name %>");
-
           $('textarea').val('');
           errorMaker();
         });
